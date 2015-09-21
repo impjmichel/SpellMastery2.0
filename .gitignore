@@ -19,3 +19,34 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# images that might or might not be copyrighted,
+# you might want to make your own images and add 
+# them to /Assets/Resources/img/avatars
+avatar_basic.png
+avatar_adventurer.png
+avatar_beast_druid.png
+avatar_death.png
+avatar_female_beast_ranger.png
+avatar_female_caster.png
+avatar_female_elf_druid.png
+avatar_female_elf_druid2.png
+avatar_female_hooded.png
+avatar_female_human_paladin.png
+avatar_female_human_ranger.png
+avatar_female_monster.png
+avatar_female_paladin.png
+avatar_female_ranger.png
+avatar_female_warrior.png
+avatar_female_wizard.png
+avatar_frog_warrior.png
+avatar_male_barbarian.png
+avatar_male_barbarian2.png
+avatar_male_cleric.png
+avatar_male_dwarf.png
+avatar_male_dwarf_warrior.png
+avatar_male_human_ranger.png
+avatar_male_ranger.png
+avatar_male_sorcerer.png
+avatar_orc.png
+avatar_puppeteer.png

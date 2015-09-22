@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace SpellMastery.Model.DnD
 {
@@ -311,7 +312,7 @@ namespace SpellMastery.Model.DnD
 			JSONObject jSouls = new JSONObject();
 			foreach (DnDClassSoul soul in mClasses)
 			{
-				jSouls.Add(""+soul.CharacterClass, soul.Serialize());
+				jSouls.Add(soul.CharacterClass.ToString(), soul.Serialize());
 			}
 			obj.Add(CLASS_SOULS, jSouls);
 			// abilities:
@@ -348,9 +349,9 @@ namespace SpellMastery.Model.DnD
 			var classes = Enum.GetValues(typeof(DnDCharClass)).Cast<DnDCharClass>();
 			foreach (DnDCharClass charClass in classes)
 			{
-				if (jSouls.ContainsKey(""+charClass))
+				if (jSouls.ContainsKey(charClass.ToString()))
 				{
-					if (!string.IsNullOrEmpty(jSouls.GetString(""+charClass)))
+					if (!string.IsNullOrEmpty(jSouls.GetObject(charClass.ToString()).ToString()))
 					{
 						DnDClassSoul newSoul = null;
 						switch (charClass)
@@ -363,7 +364,7 @@ namespace SpellMastery.Model.DnD
 						}
 						if (newSoul != null)
 						{
-							newSoul.Deserialize(jSouls.GetObject("" + charClass));
+							newSoul.Deserialize(jSouls.GetObject(charClass.ToString()));
 							mClasses.Add(newSoul);
 						}
 					}

@@ -216,6 +216,10 @@ namespace SpellMastery.Model.DnD
 		public void PrepareMainSpell(Spell spell, int rank)
 		{
 			int number = SpellsPerDay()[rank];
+			while (rank >= mMainSpells.Count)
+			{
+				mMainSpells.Add(new List<KeyValuePair<Spell, bool>>());
+			}
 			if (mMainSpells[rank].Count >= number)
 			{
 				int index = -1;
@@ -254,6 +258,29 @@ namespace SpellMastery.Model.DnD
 		public string ShortInfo()
 		{
 			return string.Format("{0} [{1}]", mClass, mClassLevel);
+		}
+
+		public int NumberOfPreparedMainSpells(int rank)
+		{
+			int result = 0;
+			if (mMainSpells.Count <= rank)
+				return result;
+			foreach (KeyValuePair<Spell, bool> pair in mMainSpells[rank])
+			{
+				if (!pair.Value)
+					result++;
+			}
+			return result;
+		}
+
+		public int NumberOfPreparedExtraSpells(int rank)
+		{
+			int result = 0;
+			if (mExtraSpells.Count <= rank)
+				return result;
+			if (!mExtraSpells[rank].Value)
+				result++;
+			return result;
 		}
 
 		public abstract DnDSkillModel CreateSkillModel();

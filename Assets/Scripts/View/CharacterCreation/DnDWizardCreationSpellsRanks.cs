@@ -89,7 +89,7 @@ namespace SpellMastery.View
 					button.GetComponent<IntButtonHandler>().NotificationCatcher = this;
 					int number = mWizard.NumberofUnknownSpells(i + 1);
 					ViewUtility.ChangeSimpleButtonText(string.Format(cRankButtonText, i + 1, number), button);
-					ViewUtility.EnableButton(button, number != 0);
+					ViewUtility.EnableSimpleButton(button, number != 0);
 					mButtons.Add(button);
 					height += buttonHeight;
 				}

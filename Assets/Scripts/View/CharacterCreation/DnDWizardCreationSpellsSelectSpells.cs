@@ -34,7 +34,7 @@ namespace SpellMastery.View
 				// add spell:
 				wizard.AddSpellToKnownList(mSpellsToDisplay[notification], SelectedRank);
 				// disable button:
-				ViewUtility.EnableButton(mButtons[notification], false);
+				ViewUtility.EnableSimpleButton(mButtons[notification], false);
 			}
 		}
 

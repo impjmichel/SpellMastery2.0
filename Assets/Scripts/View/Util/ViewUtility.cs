@@ -90,7 +90,21 @@ namespace SpellMastery.View.Util
 
 			go = button.transform.FindChild("Right").gameObject;
 			ChangeSimpleButtonText(right, go);
-		
+		}
+
+		/// <summary>
+		/// Normally used for preparing spells
+		/// </summary>
+		public static void ChangeDualButtonText(GameObject button, string mainText, string mainTop = "Prepare:", string extra = "Prepare as:\nExtra Spell")
+		{
+			GameObject go = button.transform.FindChild("ButtonLeft").FindChild("Bottom").gameObject;
+			ChangeSimpleButtonText(mainText, go);
+
+			go = button.transform.FindChild("ButtonLeft").FindChild("Top").gameObject;
+			ChangeSimpleButtonText(mainTop, go);
+
+			go = button.transform.FindChild("ButtonRight").gameObject;
+			ChangeSimpleButtonText(extra, go);
 		}
 
 		public static string MakeStringVivaldiViable(string input)
@@ -119,7 +133,7 @@ namespace SpellMastery.View.Util
 			return result;
 		}
 
-		public static void EnableButton(GameObject button, bool enable)
+		public static void EnableSimpleButton(GameObject button, bool enable)
 		{
 			if (enable)
 			{
@@ -131,6 +145,14 @@ namespace SpellMastery.View.Util
 				button.GetComponent<CanvasGroup>().alpha = .4f;
 				button.GetComponent<Button>().interactable = false;
 			}
+		}
+
+		public static void EnableDualButton(GameObject button, bool enableLeft, bool enableRight)
+		{
+			GameObject go = button.transform.FindChild("ButtonLeft").gameObject;
+			EnableSimpleButton(go, enableLeft);
+			go = button.transform.FindChild("ButtonRight").gameObject;
+			EnableSimpleButton(go, enableRight);
 		}
 
 		public static string ToViewString(CharacterGame game)

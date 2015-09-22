@@ -79,7 +79,7 @@ public class DnDWizardCreationSpellsMain : CreationMainScreen
 				numberOfUnknownSpells += mSoul.NumberofUnknownSpells(i);
 			}
 			//disabling button if no more spells can be added:
-			ViewUtility.EnableButton(transform.FindChild("Menu").FindChild("AddSpellsButton").gameObject, numberOfUnknownSpells != 0);
+			ViewUtility.EnableSimpleButton(transform.FindChild("Menu").FindChild("AddSpellsButton").gameObject, numberOfUnknownSpells != 0);
 			// setting the top text:
 			if (TopText != null)
 			{

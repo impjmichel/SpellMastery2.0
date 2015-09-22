@@ -4,11 +4,15 @@ using SpellMastery.View.Util;
 using UnityEngine;
 using SpellMastery.Control;
 using SpellMastery.Model.DnD;
+using UnityEngine.UI;
 
 namespace SpellMastery.View
 {
 	public abstract class SpellScreen : ScrollViewScreen, IButtonHandler
 	{
+		protected const string cTwoPartPrefab = "Prefabs/TwoPartButton";
+		protected const string cSimplePrefab = "Prefabs/SimpleButton";
+
 		protected List<GameObject> mButtonList = new List<GameObject>();
 		protected bool mShouldUpdate = true;
 		protected int mSelectedClass = -1;
@@ -64,6 +68,8 @@ namespace SpellMastery.View
 		public void InitButtons()
 		{
 			DeInitButtons();
+			Reset();
+			mTotalHeight = 0;
 			if (mSelectedRank >= 0)
 			{
 				InitSpellSelection();
@@ -94,6 +100,7 @@ namespace SpellMastery.View
 					}
 				}
 			}
+			UpdateNow = true;
 		}
 
 		public override void Back()
@@ -137,6 +144,14 @@ namespace SpellMastery.View
 			}
 		}
 
+		protected void SetTopText(string main, string extra = "")
+		{
+			Text text = transform.FindChild("Top").FindChild("TextLeft").GetComponent<Text>();
+			text.text = main;
+			text = transform.FindChild("Top").FindChild("TextRight").GetComponent<Text>();
+			text.text = extra;
+		}
+
 		private void ExitScreen()
 		{
 			if (PrevScreen != null)
@@ -148,15 +163,9 @@ namespace SpellMastery.View
 			}
 		}
 
-		private void InitClassSelection()
-		{
-			throw new NotImplementedException();
-		}
+		protected abstract void InitClassSelection();
 
-		private void InitRankSelection()
-		{
-			throw new NotImplementedException();
-		}
+		protected abstract void InitRankSelection();
 
 		protected abstract void InitSpellSelection();
 	}

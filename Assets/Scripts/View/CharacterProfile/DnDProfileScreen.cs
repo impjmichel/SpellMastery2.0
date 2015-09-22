@@ -83,7 +83,7 @@ namespace SpellMastery.View
 		{ // using this for "to Avatar selection screen"
 			if (AvatarSelectionScreen != null)
 			{
-				ButtonCLickHandler(mPreviousSelected, 0);
+				ButtonCLickHandler(mPreviousSelected, 0, gameObject);
 				AvatarSelectionScreen.SetActive(true);
 				Reset();
 				DeInitButtons();
@@ -96,7 +96,7 @@ namespace SpellMastery.View
 			base.Back();
 			if (CharacterOptionScreen != null)
 			{
-				ButtonCLickHandler(mPreviousSelected, 0);
+				ButtonCLickHandler(mPreviousSelected, 0, gameObject);
 				CharacterOptionScreen.GetComponent<CharacterOptionsScreen>().ShouldUpdate = true;
 				CharacterOptionScreen.SetActive(true);
 				Reset();
@@ -135,7 +135,7 @@ namespace SpellMastery.View
 			}
 		}
 
-		public void ButtonCLickHandler(int notification, int senderID)
+		public void ButtonCLickHandler(int notification, int senderID, GameObject sender)
 		{
 			if (notification < 0)
 				return;

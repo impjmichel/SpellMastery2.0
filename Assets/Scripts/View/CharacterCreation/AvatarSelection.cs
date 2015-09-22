@@ -31,7 +31,7 @@ namespace SpellMastery.View
 			set { mButtons = value; }
 		}
 
-		public void ButtonCLickHandler(int notification, int senderID)
+		public void ButtonCLickHandler(int notification, int senderID, GameObject sender)
 		{
 			UpdateSelectionBorder(notification);
 		}

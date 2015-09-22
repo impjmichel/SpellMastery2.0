@@ -10,7 +10,7 @@ namespace SpellMastery.View.Util
 
 		public void OnClick_WithNotification()
 		{
-			NotificationCatcher.ButtonCLickHandler(NotificationInt, ButtonID);
+			NotificationCatcher.ButtonCLickHandler(NotificationInt, ButtonID, gameObject);
 		}
 	}
 }

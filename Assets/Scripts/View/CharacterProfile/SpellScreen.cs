@@ -10,6 +10,8 @@ namespace SpellMastery.View
 {
 	public abstract class SpellScreen : ScrollViewScreen, IButtonHandler
 	{
+		protected const int cRegularSpell = 0;
+		protected const int cExtraSpell = 1;
 		protected const string cTwoPartPrefab = "Prefabs/TwoPartButton";
 		protected const string cSimplePrefab = "Prefabs/SimpleButton";
 
@@ -19,6 +21,7 @@ namespace SpellMastery.View
 		protected int mSelectedRank = -1;
 		protected int mSelectedSpell = -1;
 		protected int mSelectedSpellSender = -1;
+		protected GameObject mLastClicked;
 
 		public GameObject PrevScreen;
 
@@ -34,8 +37,9 @@ namespace SpellMastery.View
 			}
 		}
 
-		public void ButtonCLickHandler(int notification, int senderID)
+		public void ButtonCLickHandler(int notification, int senderID, GameObject sender)
 		{
+			mLastClicked = sender;
 			if (mSelectedClass < 0)
 			{
 				mSelectedClass = notification;
@@ -158,6 +162,7 @@ namespace SpellMastery.View
 			{
 				mSelectedRank = -1;
 				mSelectedClass = -1;
+				PrevScreen.GetComponent<CharacterOptionsScreen>().ShouldUpdate = true;
 				PrevScreen.SetActive(true);
 				gameObject.SetActive(false);
 			}

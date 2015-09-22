@@ -26,7 +26,7 @@ namespace SpellMastery.View
 			set { mButtons = value; }
 		}
 
-		public void ButtonCLickHandler(int notification, int senderID)
+		public void ButtonCLickHandler(int notification, int senderID, GameObject sender)
 		{
 			DnDWizard wizard = (DnDWizard)((DnDCharacter)Storage.Character).Classes.Find(x => x.CharacterClass == DnDCharClass.Wizard);
 			if (wizard != null && SelectedRank >= 0)

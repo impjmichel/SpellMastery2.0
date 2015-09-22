@@ -9,8 +9,6 @@ namespace SpellMastery.View
 {
 	public class PrepareSpellScreen : SpellScreen
 	{
-		private const int cRegularSpell = 0;
-		private const int cExtraSpell = 1;
 		private const string cDualPrefab = "Prefabs/DualButton";
 
 		private List<Spell> mCurrentSpells;
@@ -66,7 +64,7 @@ namespace SpellMastery.View
 			{
 				int selected = mButtonList[0].GetComponent<IntButtonHandler>().NotificationInt;
 				int sender = mButtonList[0].GetComponent<IntButtonHandler>().ButtonID;
-				ButtonCLickHandler(selected, sender);
+				ButtonCLickHandler(selected, sender, gameObject);
 			}
 			UpdateNow = true;
 		}
@@ -180,10 +178,10 @@ namespace SpellMastery.View
 			if (soul.KnownSpells.Count < mSelectedRank)
 				return "";
 
-			string result = "Ready / unused";
+			string result = "p / u";
 			if (soul.CanCastExtraSpell)
 			{
-				result += " / extra";
+				result += " / +";
 			}
 			int prepared = soul.NumberOfPreparedMainSpells(mSelectedRank);
 			int unused = soul.SpellsPerDay()[mSelectedRank] - prepared;

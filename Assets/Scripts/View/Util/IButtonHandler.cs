@@ -10,7 +10,7 @@ namespace SpellMastery.View.Util
 			get; set;
 		}
 
-		void ButtonCLickHandler(int notification, int senderID);
+		void ButtonCLickHandler(int notification, int senderID, GameObject sender);
 
 		void InitButtons();
 

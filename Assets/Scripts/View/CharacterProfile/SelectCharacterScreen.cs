@@ -21,7 +21,7 @@ namespace SpellMastery.View
 			set { mButtons = value; }
 		}
 
-		public void ButtonCLickHandler(int notification, int senderID)
+		public void ButtonCLickHandler(int notification, int senderID, GameObject sender)
 		{
 			AppStorage.Instance.CurrentCharacter = AppStorage.Instance.Characters[notification];
 			Next();
